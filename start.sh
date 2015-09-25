@@ -9,13 +9,15 @@ hostname $HOSTNAME
 if [ -f /data/ssh_key ];
 then
    echo "SSH key already exists."
-   cp -rf /data/ssh_key /root/.ssh/authorized_keys/id_rsa.pub
+   cp -rf /data/ssh_key /root/.ssh/authorized_keys
 else
    echo "SSH key does not exist. Fetching from API..."
    ${TOKEN:?"You need to set the TOKEN env var on you dashboard..."}
    curl -H "Authorization: Bearer $TOKEN" 'https://api.resin.io/ewa/user__has__public_key?$select=id,title,public_key' | jq -r '.d[0].public_key' > /data/ssh_key
-   cp -rf /data/ssh_key /root/.ssh/authorized_keys/id_rsa.pub
+   cp -rf /data/ssh_key /root/.ssh/authorized_keys
 fi
+
+chmod 640  /root/.ssh/authorized_keys
 
 # Restarting the application re-fetches the current
 # commit, therefore discards changes we make to /app

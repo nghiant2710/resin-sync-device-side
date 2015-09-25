@@ -25,7 +25,7 @@ RUN sed -i 's/sshd -D $SSHD_OPTS/sshd -D -p80 $SSHD_OPTS/' /lib/systemd/system/s
 RUN mkdir -p /root/.ssh
 #COPY keys/id_rsa.pub /root/.ssh/authorized_keys
 RUN chmod 700  /root/.ssh
-RUN chmod 640  /root/.ssh/authorized_keys
+#RUN chmod 640  /root/.ssh/authorized_keys
 
 #=================================================================
 #User Dockerfile
