@@ -30,3 +30,9 @@ replacing <RESIN_DEVICE_UUID> with the UUID of your resin.io device.
 Now any time you save any of the python files in the `/src` directory they will automatically be synced to the device and the container will be restarted. It should only take about 20 seconds to have the new code running.
 
 Obviously if you need to install any dependencies or pip install stuff, you will need to add them to the Dockerfile or requirements.txt file.
+
+Another nice side affect of this base image is that you can ssh into the container using:
+```
+ssh root@<MY_DEVICE_IP> -p80
+```
+and the passphrase is `resin`
