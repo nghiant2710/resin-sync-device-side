@@ -29,8 +29,19 @@ RUN chmod 700  /root/.ssh
 
 #=================================================================
 #User Dockerfile
+
+#Enable systemd init system in the container
 ENV INITSYSTEM on
-COPY start.sh start.sh
-COPY src/ /usr/src/app
+
+# pip install python deps from requirements.txt
+# For caching until requirements.txt changes
+ADD ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+#Copy all the initialisation scripts
+COPY ./*.sh /
+
+# Main source code
+ADD /src/ /usr/src/app
 
 CMD ["bash", "/start.sh"]

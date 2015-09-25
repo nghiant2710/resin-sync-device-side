@@ -1,0 +1,2 @@
+#put all python dependencies in here.
+Flask==0.10.1
