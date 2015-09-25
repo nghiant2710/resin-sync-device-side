@@ -16,7 +16,8 @@ cd resin-plugin-watch && npm link
 Now when you run `resin help` you should see the `watch` plugin listed at the bottom of the list of commands.
 
 Next we need to push this repo (i.e resin-sync-device-side) to our device. We also need to set up an environment variable on the dashboard:
-`TOKEN` = `<your_resin.io_token`
+`TOKEN` = `<your_resin_token>`
+You can get this Token from your preferences page.
 
 You will also need to enable the resin device URL, this can be done from the Actions page on the device dashboard.
 
