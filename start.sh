@@ -11,7 +11,7 @@ then
    echo "SSH key already exists."
 else
    echo "SSH key does not exist. Fetching from API..."
-   echo ${TOKEN:?"You need to set the TOKEN env var on you dashboard..."}
+   echo ${TOKEN:?"You need to set the TOKEN env var on you dashboard..."&& break}
    curl -H "Authorization: Bearer $TOKEN" 'https://api.resin.io/ewa/user__has__public_key?$select=id,title,public_key' | jq -r '.d[0].public_key' > /data/ssh_key
 fi
 
